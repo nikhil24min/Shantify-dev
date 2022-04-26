@@ -1,0 +1,107 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+    {% block style %}
+      <style>
+        .rounded{
+          box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        }
+      </style>
+
+    {% endblock%}
+
+
+
+
+    {% block content %}
+
+    
+    
+
+      <!-- landing page -->
+      <section>
+          <div class="container-fluid landpage">
+              <div class="row text-center justify-content-around align-content-center">
+                  <div class="col">
+                    
+
+                    <div style="transition: .5s;">
+                      <h1>Music is the way of life</h1>
+                      <p>music can heal anything so try out the new music application</p>
+                    </div>
+
+                    <div class="mt-4">
+                        <button class="main-btn btn btn-success btn-lg">Listen now <i class="fas fa-music ps-3"></i></button>
+                    </div>
+
+                    {% if messages %}
+                    {% for m in messages %}
+
+                    {% if m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                      <div class="alert alert-success text-center messages mt-3 " role="alert">
+                        {{ m }}
+                      </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+              </div>
+          </div>
+      </section>
+    
+      <!-- quetsion accordion -->
+      <section class="bg-light questions">
+        <div class="container  rounded">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header " id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      What is Shantify?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-dark text-light">
+                      Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>  
+                    </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                     How Shantify works?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-dark text-light">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                      Where are from?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-dark text-light">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </section>
+      {% endblock %}
+
+      {% block script %}
+
+      <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+
+      <script text="javascript">
+        setTimeout(fade_out, 3000);
+        function fade_out() {
+            $(".messages").fadeOut().empty();
+        }
+        $(".post-form")[0].reset(); // this is to reset the form 
+      </script>
+      {% endblock script %}
+      

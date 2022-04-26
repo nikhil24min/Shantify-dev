@@ -1,0 +1,142 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'CSS/guprofile.css'%}">
+
+<style>
+    .navbar{
+        background-color: black!important;
+    }
+
+    .gradient-custom {
+  /* fallback for old browsers */
+  background: #f2d268;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, rgb(172, 231, 126), rgb(193, 253, 133));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, rgb(182, 255, 109), rgb(41, 78, 3))
+}
+
+.wrapper{
+  background-color: #f6d365;
+  background: url('/static/MEDIA/bg2.jpg');
+    background-size: cover;
+}
+
+.editprofile{
+  text-decoration: none ; 
+  color:black;
+  transition: .3s;
+  font-size: 1.2rem;
+}
+.gradient-custom p{
+  font-size: 1.3rem;
+}
+
+.editprofile:hover{
+  color:rgb(255, 255, 255)
+}
+  
+.socialicons a{
+  color:green;
+  text-decoration: none;
+}
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="wrapper" id="tsparticles">
+
+
+<section class="vh-100 mt-5" >
+    <div class="container pt-3  ">
+      <div class="row d-flex justify-content-center align-items-center h-100 ">
+        <div class="col col-lg-8 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem; border:0;">
+            <div class="row g-0">
+              <div class="col-md-5 gradient-custom text-center text-green" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <img
+                  src="{{profile.image.url}}"
+                  alt="Avatar"
+                  class="img-fluid rounded-circle  my-5 "
+                  style="width: 200px;"
+                />
+                <h3>{{profile.firstname}} {{profile.lastname}}</h3>
+                <h5>{{profile.user.username}}</h5>
+                <p>feelin happy</p>
+                <a href="" class="editprofile"><i class="far fa-edit mb-5"></i> Edit info</a>
+                
+              </div>
+              <div class="col-md-7">
+                <div class="card-body p-4">
+                  <h6>Contact</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6><i class="far fa-at "></i> Email</h6>
+                      <p class="text-muted">{{profile.user.email}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-mobile "></i> Mobile</h6>
+                      <p class="text-muted">{{profile.mobile}}</p>
+                    </div>
+                  </div>
+                  <h6>My info</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-cake-candles"></i> Birthday</h6>
+                      <p class="text-muted">{{profile.dob}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-mars-and-venus"></i> Gender</h6>
+                      <p class="text-muted">{{profile.gender}}</p>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-earth-asia"></i> Country</h6>
+                      <p class="text-muted">{{profile.country}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-language"></i> Language</h6>
+                      <p class="text-muted">{{profile.language}}</p>
+                    </div>
+                  </div>
+
+                  <h6>Music and care</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-heart"></i> Liked tracks</h6>
+                      <p class="text-muted">78 tracks liked</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-pen-clip"></i> music reviews</h6>
+                      <p class="text-muted">23 reviews</p>
+                    </div>
+                  </div>
+                  
+                  <hr class="mt-0 mb-4">
+                  <div class="d-flex justify-content-center socialicons">
+                    <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
+ <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'musicplayer/music_base.html' %}
+
+
+{% load static %}
+
+{% block style %}
+<style>
+    
+    .maincontainer{
+        
+        padding: 1rem;
+        
+    
+    }
+
+    body{
+        background-color: rgb(0, 0, 0);
+        color:rgb(4, 4, 4);
+
+        background: #215f00;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #e4e4d9, #215f00);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #e4e4d9, #215f00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        background: url('/static/images/bg01.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    footer{
+        margin-top:4rem;
+    }
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="container">
+
+
+    {% if rplist %}
+        <div class="card-header1 border-0 my-3">
+            <h3 >Recommended playlist for you <i class="fa-solid fa-heart"></i></h3>
+        </div>  
+        
+        <div class="row row-cols-1 row-cols-lg-6 row-cols-md-3 g-4">
+            {% for each in rplist %}
+            <div class="col">
+            <a href="{% url 'playlistplayer' each.id %}"">
+                <div class="card border-0">
+                <img src="{{each.cover_image.url}}" class="card-img-top " alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{each.playlist_name}}</h5>      
+                </div>
+                </div>
+        
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card-header1 border-0 my-3">
+            <h3>Oops! No recommended playlist found</h3>
+        </div>   
+    {% endif %}
+</div>
+
+<div class="container">
+    {% if plist %}
+        <div class="card-header1 border-0 my-3">
+            <h3>All playlists</h3>
+        </div>  
+        
+        <div class="row row-cols-1 row-cols-lg-6 row-cols-md-3 g-4">
+            {% for each in plist %}
+            <div class="col">
+        
+            <a href="{% url 'playlistplayer' each.id %}"">
+                <div class="card border-0">
+                <img src="{{each.cover_image.url}}" class="card-img-top " alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{each.playlist_name}}</h5>
+                </div>
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card-header1 border-0 my-3">
+            <h3>Oops! No playlist found</h3>
+        </div>   
+    {% endif %}
+   
+
+</div>
+
+{% endblock content %}

@@ -109,3 +109,24 @@ def guprofile(request):
 
     context = {'profile':profile,'form':form}
     return render(request,"accounts/guprofile.html", context)
+
+# profile update form page
+@login_required(login_url='gulogin')
+def guprofileupdate(request):
+    tempprofile = request.user.guprofile
+    form = GUProfilefForm(instance=tempprofile)
+    if request.method == "POST":
+        
+        form = GUProfilefForm(request.POST, request.FILES, instance=tempprofile)
+        if form.is_valid():
+            profile = form.save()
+            #login(request, user)
+            messages.success(request, "Profile Updated")
+            print("success")
+            return redirect("guprofile")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    print("unsuccess")
+    return render (request=request, template_name="accounts/profile_update.html", context={"form":form})
+
+
+

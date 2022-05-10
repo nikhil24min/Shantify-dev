@@ -1,0 +1,46 @@
+{% extends 'carepackages/package_base.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    .container.main{
+        min-height:80vh;
+    }
+
+    .card{
+        background-color: rgba(250, 235, 215, 0.052);
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="container main">
+    <div class="row">
+        <div class="col">
+            <div class="header">
+                <h1 class="text-center text-light">{{packs.pack_name}}</h1>
+            </div>
+
+            <div class="card ">
+                <div class="row">
+                    {% for each in packs.pack_tracks.all %}
+                    <div class="col-md-6">
+                        <audio controls>
+                            <source src="{{ each.track_path.url }}" type="audio/ogg">
+                            Your browser does not support the audio tag.
+                        </audio>
+                        <h2>song</h2>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>{{each.track_name}}</h3>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

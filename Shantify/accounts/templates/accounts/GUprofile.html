@@ -3,7 +3,6 @@
 
 {% block style%}
 <link rel="stylesheet" href="{% static 'CSS/guprofile.css'%}">
-
 <style>
     .navbar{
         background-color: black!important;
@@ -61,13 +60,13 @@
                 <img
                   src="{{profile.image.url}}"
                   alt="Avatar"
-                  class="img-fluid rounded-circle  my-5 "
-                  style="width: 200px;"
+                  class="img-fluid rounded-circle my-5 "
+                  style="height: 200px; width:200px; object-fit: cover;"
                 />
                 <h3>{{profile.firstname}} {{profile.lastname}}</h3>
                 <h5>{{profile.user.username}}</h5>
-                <p>feelin happy</p>
-                <a href="" class="editprofile"><i class="far fa-edit mb-5"></i> Edit info</a>
+                <p>Feelin' {{profile.current_mood}}</p>
+                <a href="{% url 'guprofileupdate' %}" class="editprofile"><i class="far fa-edit mb-5"></i> Edit info</a>
                 
               </div>
               <div class="col-md-7">
@@ -111,11 +110,11 @@
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6><i class="fa-solid fa-heart"></i> Liked tracks</h6>
-                      <p class="text-muted">78 tracks liked</p>
+                      <p class="text-muted">{{profile.like_count}}</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6><i class="fa-solid fa-pen-clip"></i> music reviews</h6>
-                      <p class="text-muted">23 reviews</p>
+                      <p class="text-muted">{{profile.review_count}}</p>
                     </div>
                   </div>
                   

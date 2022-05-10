@@ -1,0 +1,127 @@
+{% extends 'carepackages/package_base.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    .maincontainer{
+        min-height:60vh;
+    }
+    .card{
+        font-family: 'Nunito', sans-serif;
+        font-weight: 900;
+        border-radius: 1rem !important;
+        box-shadow: 10px 10px 14px -3px rgba(0,0,0,0.75);
+        transition:.3s;
+        border: none;
+        color: black;
+    }
+
+    .card-img-top{
+        object-fit:cover;
+        max-height:400px;
+    
+        border-top-left-radius: .8rem;
+        border-top-right-radius: .8rem;
+    }
+    .info-btn{
+        border-radius: 50%;
+        border:none;
+        width: 4rem;
+        height: 4rem;
+        font-size: 2.6rem;
+        color:green;
+        background-color: black ;
+        box-shadow: 10px 10px 14px -3px rgba(0,0,0,0.75);
+        transition: .3s;
+    }
+
+    .card-body{
+        background: #6A9113;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #141517, #6A9113);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #113111, #92cb17); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        border-bottom-left-radius: .8rem;
+        border-bottom-right-radius: .8rem;
+    }
+    .info-btn:hover{
+        color:rgb(195, 243, 186);
+        box-shadow:none;
+    }
+
+    .card-link{
+        text-decoration: none;
+        color:black;
+    
+    }
+
+    .card-link:hover{
+        
+        color:rgb(0, 0, 0);
+        font-size: 3rem;
+    }
+
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="container maincontainer">
+    {% if pack %}
+    <div class="card-header1 text-light border-0 my-3">
+        <h3>Care-package in detail</h3>
+    </div>  
+    
+    <div class="card mb-3">
+        <img src="{{ pack.pack_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body p-5">
+
+            <div class="row ">
+                <div class="col-md-8 ">
+                    <h2 class="card-title">{{ pack.pack_name}}</h2>
+                    <p class="card-text">{{ pack.pack_desc}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti id similique consequatur eius, distinctio dicta vero nobis. Impedit corrupti placeat ratione architecto ex sapiente exercitationem quod, similique qui, dolorum veniam?
+                    Nihil officia velit nostrum? Nemo explicabo in beatae placeat optio deleniti ea libero quibusdam, natus atque porro pariatur amet, officiis aspernatur consequatur mollitia? Ut amet similique enim iste. Esse, debitis.
+                    Explicabo, unde voluptatem? Ratione quia, assumenda quam repudiandae adipisci nesciunt, qui quaerat culpa molestiae earum veritatis officia magni quibusdam perferendis tempora aspernatur facilis maxime deleniti? Doloremque impedit ad aut nam.</p>
+                </div>
+
+                <div class="col-md-4 d-grid align-items-center ">
+                    <h3 class="card-text">{{ pack.subscribed_count}} subscribers</h3>
+                    {% if subscribed %}
+                    <a class="btn btn-outline-dark my-3">Readin material</a>
+                    {% else %}
+                    <h4 class="text-light">Subscribe to view the reading material</h4>
+                    {% endif %}
+
+                    {% if subscribed %}
+                    <a class="btn btn-outline-dark my-3">Pacgake playlist</a>
+                    {% else %}
+                    <h4 class="text-light">Subscribe to view the package playlist</h4>
+                    {% endif %}
+
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        
+                        {% if subscribed %}
+                        <button type="submit" name="subscribe" value="{{pack.id}}" class="btn btn-danger my-3">UnSubscribe</button>
+                        {% else %}
+                        <button type="submit" name="subscribe" value="{{pack.id}}" class="btn btn-warning my-3">Subscribe</button>
+                        {% endif %}
+                         
+                    </form>
+                </div>
+            </div>
+
+            <p class="card-text mt-3 mb-0"><small class="text-muted">We care about you!</small></p>
+        </div>
+    </div>
+    
+    {% else %}
+    <div class="header text-center my-5 vh-60">
+        <h1>Sorry No details available</h1>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
+
+
+{% block script %}
+{% endblock script %}
+

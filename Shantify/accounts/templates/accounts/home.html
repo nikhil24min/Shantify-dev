@@ -31,12 +31,11 @@
                     </div>
 
                     <div class="mt-4">
-                        <button class="main-btn btn btn-success btn-lg">Listen now <i class="fas fa-music ps-3"></i></button>
+                        <a href="{% url 'questions' %}" class="main-btn btn btn-success btn-lg">Listen now <i class="fas fa-music ps-3"></i></a>
                     </div>
 
                     {% if messages %}
                     {% for m in messages %}
-
                     {% if m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                       <div class="alert alert-success text-center messages mt-3 " role="alert">
                         {{ m }}

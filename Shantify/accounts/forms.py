@@ -25,9 +25,10 @@ class GUProfilefForm(ModelForm):
     class Meta:
         model = GUprofile
         fields = '__all__'
-        exclude = ['user','guOTP']
+        exclude = ['user','guOTP','like_count','review_count']
         readonly = ['country']
         widgets = {
         'dob': forms.DateInput(attrs={'class': 'datepicker form-control', 'type': 'date'}),
         }
 
+    

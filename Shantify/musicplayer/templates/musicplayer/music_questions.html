@@ -1,0 +1,81 @@
+{% extends 'musicplayer/music_base.html' %}
+
+
+{% load static %}
+
+{% block style %}
+<style>
+    .question{
+        background-color: rgb(18, 18, 20);
+        border-radius: .6rem;
+        padding: .6rem;
+        padding-left: 1rem;
+
+    }
+   
+    .answer{
+        font-size: 1.6rem;
+    }
+
+    input[type=radio]{
+        width: 50px;
+        background-color: rgb(0, 0, 0);
+    }
+    
+    .formcontainer{
+        margin:1rem;
+        padding: 1rem;
+        
+        width:60% !important;
+    
+    }
+
+    body{
+       background-color: rgb(0, 0, 0);
+       color:rgb(4, 4, 4);
+
+       background: #215f00;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #e4e4d9, #215f00);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #e4e4d9, #215f00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+background: url('/static/images/bg01.jpg');
+    background-size: cover;
+    background-position: center;
+    }
+   
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="container maincontainer">
+
+        
+    <div class="formcontainer">
+        <form class="d-grid " method="POST">
+            {% csrf_token %}
+            <div class="col my-3 question">
+                <h2>How are you feeling now?</h2>
+            </div>
+            <div class="option">
+                {{form.question1}}
+            </div>
+
+            
+            <div class="button-box d-grid g-2 row mt-4 ">
+                <button class="btn btn-success border-1 p-3" type="submit">
+                    Submit
+                </button>
+    
+                <button class="btn btn-dark  p-3  " type="reset">
+                    Reset
+                </button>
+            </div>
+
+            
+        </form>
+    </div>
+
+</div>
+{% endblock content %}
+

@@ -1,0 +1,288 @@
+{% extends 'musicplayer/music_base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+  body{
+    background: url('/static/bgimages/bg01sunrise.jpg');
+    background-size: cover;
+    font-family: 'Nunito', sans-serif;
+    color: black;
+  }
+
+  h1, h2, h3{
+    text-shadow: none;
+    color:rgb(209, 208, 208);
+  }
+  .card{
+    border:None;
+    -webkit-box-shadow: 11px 11px 14px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 11px 11px 14px -6px rgba(0,0,0,0.7);
+    box-shadow: 11px 11px 14px -6px rgba(0,0,0,0.7);
+
+    background:rgba(42, 44, 42, 0.478);
+    color:rgb(225, 230, 213);    
+  }
+
+
+
+  .info{
+      min-height:100vh;
+  }
+
+  .info img{
+      min-height:90vh;
+      object-fit:cover;
+  }
+
+  #like-button{
+    border:none;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 2rem;
+
+    -webkit-box-shadow: 11px 11px 14px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 11px 11px 14px -6px rgba(0,0,0,0.7);
+    box-shadow: 7px 8px 14px -6px rgba(0,0,0,0.7);
+  }
+  .liked{
+    color:red;
+    
+  }
+  .unliked{
+    color:rgb(0, 0, 0);
+  }
+
+  #like-button:hover{
+    color:brown;
+  }
+
+  .card-footer{
+    position:absolute;
+      bottom:0;
+      width:100%;
+    }
+
+    .backbtn{
+    margin: 0;
+    text-decoration: none;
+    color:antiquewhite;
+    float: right;
+    padding: 1rem 1.4rem 0rem 1rem ;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+  }
+
+  .backbtn:hover{
+    color:rgb(48, 217, 18);
+  }
+
+  .reviewbtn{
+    text-decoration: none;
+    color:antiquewhite;
+  }
+
+  .reviewbtn:hover{
+    color:rgb(103, 226, 97);
+  }
+  .singleplayer{
+    min-height:80px;
+  }
+
+  #playbtn{
+    border:none;
+    background-color: transparent;
+    transition: .3s;
+    color: #0eb71f;
+    box-shadow: inset;
+    font-size: 2rem;
+    text-shadow: 4px 4px 10px #000000;
+  }
+
+  #playbtn:hover{
+    color: #0b6813;
+  }
+
+  .fa-pause{
+    display: none;
+  }
+
+  footer{
+    margin-top:3rem;
+  }
+  
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="container info d-grid    align-content-center">
+
+  <div>
+    <a href="{% url 'musiclist' %}" class="backbtn text-end"><i class="fa-solid fa-arrow-left "></i> back</a>
+  </div>  
+
+  <div class="card m-3" >
+      <div class="row g-0">
+        <div class="col-md-4 p-3">
+          <img src="{{track.cover_image.url}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body px-5">
+
+            <h2 class="card-title text-center p-2 ">Music track</h2>
+            <hr class="mt-0 mb-4">
+            <div class="row pt-1 text-center">
+              <div class="col-6 mb-4 ">
+                <h4 class="text-muted"> Track name</h4>
+                <h4 > {{track.track_name}}</h4>
+              </div>
+
+              <div class="col-6 my-3">
+                <h4 class="text-muted"> Composer</h4>
+                <h4> {{track.track_creator}}</h4>
+              </div>
+
+              <div class="col-6 my-3">
+                <h4 class="text-muted"> Duration</h4>
+                <h4> {{track.duration}} <small>seconds</small> </h4>
+              </div>
+
+              <div class="col-6 my-3">
+                <h4 class="text-muted"> Reviews</h4>
+                <a class="reviewbtn" href="{% url 'reviews_list' track.id %}"><h4> {{track.reviews_count}} <small>reviews so far</small> </h4></a>
+                
+              </div>
+
+              <div class="col-6 my-3">
+                <h4 class="text-muted"> Uploaded on</h4>
+                <h4> {{track.uploaded_date}} </h4>
+              </div>
+
+              <div class="col-6 my-3">
+                <h4 class="text-muted"> Uploaded by</h4>
+                <h4>{{track.uploaded_by.first_name}} {{track.uploaded_by.last_name}}</h4>
+              </div>
+
+              <div class="col-6 my-3">
+                <h4 class="text-muted"> Likes</h4>
+                <h4 id="like_count"> {{track.likes_count}} <small> & counting</small> </h4>
+              </div>
+
+              <div class="col-6 my-3">
+                <form action="">
+                  {% csrf_token %}
+                  
+                  {% if liked %}
+                    <button class="liked" id="like-button" value="{{track.id}}"><i id="likeicon" class="fa-solid fa-heart"></i></button>                
+                  {% else %}
+                    <button class="unliked" id="like-button" value="{{track.id}}"><i id="likeicon" class="fa-regular fa-heart"></i></button>              
+                  {% endif %}
+                </form>
+              </div>
+            </div>
+
+           
+            <div class="row singleplayer p-3 ">
+              <div class="text-center align-self-center " >
+                <audio id="musictrack" src="{{track.track_path.url}}" ></audio>
+                <button id ="playbtn" onclick="playPause()" >
+                  <i class="fa-solid fa-play fa-2xl"></i>
+                  <i class="fa-solid fa-pause fa-2xl"></i>
+                  
+                </button>
+              </div>
+            </div>     
+           
+
+            <div class="col  d-grid justify-content-center">
+              <p class="align-self-end mt-3 m-0  justify-self-end text-end "><small class="text-muted">Find more such music on Shantify <i class="fa-solid fa-heart"></i></small></p>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+            
+  </div>
+
+{% endblock %}
+
+{% block script %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+  //play pause button-------------------------------------------
+  function playPause() {
+    var audioPlayer = document.getElementById('musictrack');
+    var icon = document.getElementById('icon');
+    
+
+    if (audioPlayer.paused) {
+        audioPlayer.play(); 
+        $('.fa-pause').show();
+        $('.fa-play').hide();
+    } else {
+        audioPlayer.pause(); 
+        $('.fa-play').show();
+        $('.fa-pause').hide();
+    }
+}
+ 
+  console.log("lik");
+
+  $('#myForm').trigger("reset");
+
+  $(document).on('click', '#like-button', function (e) {
+   console.log("liked") 
+  e.preventDefault();
+  $.ajax({
+      type: 'POST',
+      url: '{% url "music_like" %}',
+      data: {
+      postid: $('#like-button').val(),
+      csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+      action: 'post'
+      },
+      success: function (json) {
+      document.getElementById("like_count").innerHTML = json['result']+" & counting";
+    
+      tempbtn = document.getElementById("like-button")
+
+      console.log(json['liked']);
+    
+      
+      if(json['liked']==true)
+      {
+        console.log("check1");
+        document.getElementById('likeicon').className = 'fa-solid fa-heart';
+        document.getElementById('like-button').className = 'liked';
+        
+      }
+      else if(json['liked']==false){ 
+        console.log("check2");
+        document.getElementById('like-button').className = 'unliked';
+        document.getElementById('likeicon').className = 'fa-regular fa-heart';
+        
+      }
+
+      },
+      error: function (xhr, errmsg, err) {
+
+      }
+  });
+  })
+</script>
+
+
+
+{% endblock script %}

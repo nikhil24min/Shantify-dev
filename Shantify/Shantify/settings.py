@@ -37,8 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django-admin-interface',
+
+    #...
+    "admin_interface",
+    "colorfield",
+    #...
     'crispy_forms',
     'accounts',
+    'musicplayer',
+    'carepackage',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

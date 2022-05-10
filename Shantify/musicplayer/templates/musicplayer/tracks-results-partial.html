@@ -1,0 +1,9 @@
+{% if tracks %}
+    <ul>
+        {% for track in tracks %}
+        <li>{{ track.track_name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tracks found.</p>
+{% endif %}

@@ -1,0 +1,172 @@
+{% extends 'carepackages/package_base.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    .card{
+        max-height:500px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 900;
+        border-radius: 1rem !important;
+        box-shadow: 10px 10px 14px -3px rgba(0,0,0,0.75);
+        transition:.3s;
+    }
+
+    .card:hover{
+        box-shadow: none;
+    }
+    .card-img-top{
+        object-fit:cover;
+        max-height: 300px;
+    
+        border-top-left-radius: .8rem;
+        border-top-right-radius: .8rem;
+    }
+    .info-btn{
+        border-radius: 50%;
+        border:none;
+        width: 4rem;
+        height: 4rem;
+        font-size: 2.6rem;
+        color:green;
+        background-color: black ;
+        box-shadow: 10px 10px 14px -3px rgba(0,0,0,0.75);
+        transition: .3s;
+    }
+
+    .card-body{
+        background: #56ab2f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        border-bottom-left-radius: .8rem;
+        border-bottom-right-radius: .8rem;
+    }
+    .info-btn:hover{
+        color:rgb(195, 243, 186);
+        box-shadow:none;
+    }
+
+    .card-link{
+        text-decoration: none;
+        color:black;
+    
+    }
+
+    .card-link:hover{
+        
+        color:rgb(0, 0, 0);
+        font-size: 3rem;
+    }
+
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="container">
+
+    {% if tpists %}
+    <div class="header1 border-0 my-4 text-light">
+        <h3>Our Associated Music Therapists</h3>
+    </div>  
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+        {% for each in tpists %}
+        <div class="col">
+            <a href="{% url 'therapistinfo' each.id %}" class="card-link">
+                <div class="card border-0 ">
+                <img src="{% static 'pack_images6/t1.jpg' %}" class="card-img-top  " alt="...">
+                <div class="card-body row m-0 justify-content-center">
+                    <div class="col-md-9  text-center align-self-center">
+                        <h5 class="card-title">{{each.tfirstname}} {{each.tlastname}}</h5>
+                    </div>
+                    <div class="col-md-3  p-0 ">
+                        <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                    
+                </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <div class="col">
+            <a href="#" class="card-link">
+                <div class="card border-0 ">
+                <img src="{% static 'pack_images6/t2.jpg' %}" class="card-img-top  " alt="...">
+                <div class="card-body row m-0 justify-content-center">
+                    <div class="col-md-9  text-center align-self-center">
+                        <h5 class="card-title">packtitle</h5>
+                    </div>
+                    <div class="col-md-3  p-0 ">
+                        <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                    
+                </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="card-link">
+                <div class="card border-0 ">
+                <img src="{% static 'pack_images6/t3.jpg' %}" class="card-img-top  " alt="...">
+                <div class="card-body row m-0 justify-content-center">
+                    <div class="col-md-9  text-center align-self-center">
+                        <h5 class="card-title">packtitle</h5>
+                    </div>
+                    <div class="col-md-3  p-0 ">
+                        <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                    
+                </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="card-link">
+                <div class="card border-0 ">
+                <img src="{% static 'pack_images/t4.jpg' %}" class="card-img-top  " alt="...">
+                <div class="card-body row m-0 justify-content-center">
+                    <div class="col-md-9  text-center align-self-center">
+                        <h5 class="card-title">packtitle</h5>
+                    </div>
+                    <div class="col-md-3  p-0 ">
+                        <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                    
+                </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="card-link">
+                <div class="card border-0 ">
+                <img src="{% static 'pack_images/t1.jpg' %}" class="card-img-top  " alt="...">
+                <div class="card-body row m-0 justify-content-center">
+                    <div class="col-md-9  text-center align-self-center">
+                        <h5 class="card-title">packtitle</h5>
+                    </div>
+                    <div class="col-md-3  p-0 ">
+                        <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+                    </div>
+                    
+                </div>
+                </div>
+            </a>
+        </div>
+    
+    </div>
+    {% else %}
+    <div class="header text-center my-5 vh-100">
+        <h1>Sorry No details available</h1>
+    </div>
+    {% endif %}
+   
+</div>
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}
+

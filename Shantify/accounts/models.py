@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from datetime import date
 
+from musicplayer.models import category
+
 import datetime
 import re
 
@@ -66,6 +68,9 @@ class GUprofile(models.Model):
     image = models.ImageField(null=True, blank=True,default='guprofileDB/default.png', upload_to='guprofileDB/')
     language = models.CharField(max_length=20, null=True, blank=True)
     guOTP = models.IntegerField(null=True, blank=True)
+    like_count = models.IntegerField(default=0,blank=True)
+    review_count = models.IntegerField(default=0,blank=True)
+    current_mood = models.ForeignKey(category, verbose_name="current mood",null=True, blank=True, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.user.username

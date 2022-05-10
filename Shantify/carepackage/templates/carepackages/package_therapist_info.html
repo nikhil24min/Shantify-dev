@@ -1,0 +1,114 @@
+{% extends 'carepackages/package_base.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    .editprofile{
+  text-decoration: none ; 
+  color:black;
+  transition: .3s;
+  font-size: 1.2rem;
+}
+.gradient-custom{
+    background-color: black;
+}
+
+.gradient-custom p{
+  font-size: 1.3rem;
+}
+
+.editprofile:hover{
+  color:rgb(255, 255, 255)
+}
+  
+.socialicons a{
+  color:green;
+  text-decoration: none;
+}
+</style>
+{% endblock style %}
+
+{% block content %}
+<section class="" >
+    {% if tpist %}
+    <div class="container pt-3  my-5">
+
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col col-lg-8 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem; border:0;">
+            <div class="row g-0">
+              <div class="col-md-5 gradient-custom text-center text-green" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <img
+                  src="{% static 'pack_images/t1.jpg' %}"
+                  alt="Avatar"
+                  class="img-fluid "
+                  style=" max-height:500px; object-fit: cover;"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body p-4">
+                  
+                  <h3 class="text-center">Therapist name</h3>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-cake-candles"></i> Birthday</h6>
+                      <p class="text-muted">12-23-2001{{profile.dob}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-mars-and-venus"></i> Gender</h6>
+                      <p class="text-muted">Male{{profile.gender}}</p>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-earth-asia"></i> Country</h6>
+                      <p class="text-muted">India{{profile.country}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6><i class="fa-solid fa-language"></i> Language</h6>
+                      <p class="text-muted">Kannaada{{profile.language}}</p>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <h6><i class="far fa-at "></i> Email</h6>
+                        <p class="text-muted">nsdhcs@gmail.com{{profile.user.email}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h6><i class="fa-solid fa-mobile "></i> Mobile</h6>
+                        <p class="text-muted">9090909090{{profile.mobile}}</p>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <h6><i class="fa-solid fa-mobile "></i> Licence number</h6>
+                        <p class="text-muted">GI677767H{{profile.mobile}}</p>
+                    </div>
+
+                  </div>
+
+
+                  
+                  
+                 
+                  <div class=" card-footer p-3 d-flex justify-content-center socialicons">
+                    <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="end header text-center my-5 vh-60">
+      <h1>Sorry No details available</h1>
+    </div>
+    {% endif %}
+  </section>
+{% endblock content %}
+
+
+{% block script %}
+{% endblock script %}

@@ -1,0 +1,65 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.Active {
+    color:rgb(51, 186, 9) !important;
+  }
+
+body{
+    /* height: 200vh; */
+    background: url('/static/pack_images/bgcloud.jpg');
+    background-size: cover;
+    overflow-x: hidden;
+    margin: 0%;
+    font-family: 'Nunito', sans-serif;
+}
+.navbar{
+    background-color: black !important;
+}
+
+.navbar .nav-item{
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    color: chartreuse;
+}
+.nav-item a{
+    color: rgb(173, 185, 149);
+}
+
+.nav-item:hover,
+.nav-item a:hover{
+    color:rgb(120, 143, 108);
+}
+
+.fa-bars{
+    filter: invert(0.5);
+}
+
+/* section question */
+.questions{
+    padding: 6%;
+}
+
+/* footer */
+footer a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+
+}
+
+body::-webkit-scrollbar {
+    width: .5rem;
+  }
+   
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(119, 2, 2, 0.3);
+    background-color: rgba(87, 87, 90, 0.947);
+  }
+   
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 0, 0);
+    outline: 1px solid rgb(0, 0, 0);
+    border-radius: 0.1rem;
+  }
+  

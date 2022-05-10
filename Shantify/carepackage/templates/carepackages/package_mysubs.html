@@ -1,0 +1,62 @@
+{% extends 'carepackages/package_base.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    .container.main{
+        min-height: 70vh;
+    }
+
+    .card{
+
+        background-color: rgb(12, 30, 15);
+    }
+    a{
+        text-decoration: none;
+        color: rgb(237, 226, 226);
+    }
+
+    a:hover{
+        color:rgb(81, 179, 70);
+    }
+</style>
+{% endblock style %}
+    
+{% block content %}
+{% if packs %}
+<div class="container main">
+
+
+    <div class="header1 border-0 my-4 text-light">
+        <h3>Subscribed Care pacakages</h3>
+    </div>  
+
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+       
+        {% for each in packs %}
+        <div class="col">
+            <a href="{% url 'packinfo' each.pack_subscribed.id %}" class="card-link">
+                <div class="card border-0 mb-4">
+                <img src="{{ each.pack_subscribed.pack_image.url }}" class="card-img-top  " alt="...">
+                <div class="card-body row m-0 justify-content-center">
+                    <div class="col-md-12  text-center align-self-center">
+                        <h3 class="card-title">{{ each.pack_subscribed.pack_name }}</h3>
+                        <p class="card-text">{{  each.pack_subscribed.pack_desc}}</p>
+                        <h5 class="card-text">{{  each.pack_subscribed.subscribed_count}} subscribers</h5>
+                    </div> 
+                </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        
+    </div>
+    {% else %}
+        <div class="card-header text-light my-5 text-center" style="height: 55vh">
+            <h2>No care packs currently! sorry!</h2>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock content %}

@@ -26,26 +26,26 @@
           <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 py-2 ">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'home'%}"><i class="fa-solid fa-home fa-xs"></i> Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Songs</a>
+                <a class="nav-link" href="{% url 'musiclist' %}"><i class="fa-solid fa-music fa-xs"></i> Music</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Packages</a>
+                <a class="nav-link " href="{% url 'packlist' %}" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-cube fa-xs"></i> Carepacks</a>
               </li>
 
               {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link " href="{% url 'guprofile'%}" tabindex="-1" aria-disabled="true"> {{ user.username }}</a>
+                  <a class="nav-link " href="{% url 'guprofile'%}" tabindex="-1" aria-disabled="true"><i class="fa-regular fa-user fa-xs"></i> {{ user.username }}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="{% url 'gulogout'%}" tabindex="-1" aria-disabled="true">logout</a>
+                    <a class="nav-link " href="{% url 'gulogout'%}" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-right-from-bracket fa-xs"></i> logout</a>
                   </li>
               {% else %}
                 <li class="nav-item">
-                  <a class="nav-link " href="{% url 'gulogin'%}" tabindex="-1" aria-disabled="true">LOGIN</a>
+                  <a class="nav-link " href="{% url 'gulogin'%}" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-right-to-bracket fa-xs"></i> LOGIN</a>
                 </li>
               {% endif %}
               
